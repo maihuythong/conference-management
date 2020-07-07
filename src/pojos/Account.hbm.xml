@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 7, 2020 8:28:31 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.Account" table="account" catalog="quanlyhoinghi" optimistic-lock="version">
+        <id name="idAccount" type="java.lang.Integer">
+            <column name="IdAccount" />
+            <generator class="identity" />
+        </id>
+        <property name="hoTen" type="string">
+            <column name="HoTen" length="65535" not-null="true" />
+        </property>
+        <property name="username" type="string">
+            <column name="Username" length="50" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="Password" length="32" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="Email" length="45" not-null="true" />
+        </property>
+        <property name="isAdmin" type="boolean">
+            <column name="IsAdmin" not-null="true" />
+        </property>
+        <set name="hoinghis" table="thamgiahoinghi" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="IdAccount" not-null="true" />
+            </key>
+            <many-to-many entity-name="pojos.Hoinghi">
+                <column name="IdHoiNghi" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
