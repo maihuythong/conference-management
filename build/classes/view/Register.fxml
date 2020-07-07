@@ -41,11 +41,26 @@
                 <Font size="16.0" />
             </font>
         </TextField>
+        <TextField id="txtUsername" fx:id="txtUsername" prefHeight="40.0" prefWidth="350.0" promptText="Tên đăng nhập" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </TextField>
         <PasswordField id="txtPassword" fx:id="txtPassword" prefHeight="40.0" prefWidth="350.0" promptText="Mật khẩu" GridPane.columnIndex="1" GridPane.rowIndex="4">
             <font>
                 <Font size="16.0" />
             </font>
         </PasswordField>
+        <PasswordField id="txtPassword" fx:id="txtPassword2" prefHeight="40.0" prefWidth="350.0" promptText="Nhập lại mật khẩu" GridPane.columnIndex="1" GridPane.rowIndex="5">
+         <font>
+            <Font size="16.0" />
+         </font>
+        </PasswordField>
+        <TextField id="txtUsername" fx:id="txtEmail" prefHeight="40.0" prefWidth="350.0" promptText="Địa chỉ email" GridPane.columnIndex="1" GridPane.rowIndex="6">
+         <font>
+            <Font size="16.0" />
+         </font>
+         </TextField>
         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40" prefWidth="235" text="Đã có tài khoản?" textAlignment="CENTER" textFill="#161515" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="BOTTOM">
             <font>
                 <Font size="16.0" />
@@ -56,12 +71,7 @@
                 <Font size="18.0" />
             </font>
         </Label>
-        <TextField id="txtUsername" fx:id="txtUsername" prefHeight="40.0" prefWidth="350.0" promptText="Tên đăng nhập" GridPane.columnIndex="1" GridPane.rowIndex="3">
-            <font>
-                <Font size="16.0" />
-            </font>
-        </TextField>
-        <Button id="btnLogin" fx:id="btnSignUp" style="-fx-background-color: linear-gradient(to bottom left, #60E5FE, #D596F1); " alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="154.0" text="Đăng ký" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="BOTTOM">
+        <Button id="btnLogin" fx:id="btnSignUp" onAction="#ActionSignUp" style="-fx-background-color: linear-gradient(to bottom left, #60E5FE, #D596F1); " alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="154.0" text="Đăng ký" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="BOTTOM">
             <font>
                 <Font size="15.0" />
             </font>
@@ -72,16 +82,6 @@
             <Font name="System Bold" size="29.0" />
          </font>
       </Label>
-      <PasswordField id="txtPassword" fx:id="txtPassword2" prefHeight="40.0" prefWidth="350.0" promptText="Nhập lại mật khẩu" GridPane.columnIndex="1" GridPane.rowIndex="5">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </PasswordField>
-      <TextField id="txtUsername" fx:id="txtEmail" prefHeight="40.0" prefWidth="350.0" promptText="Địa chỉ email" GridPane.columnIndex="1" GridPane.rowIndex="6">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
       <Label fx:id="txtNotification" prefHeight="28.0" prefWidth="350.0" textFill="#df2a2a" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
          <font>
             <Font size="14.0" />

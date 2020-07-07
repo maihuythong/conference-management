@@ -20,8 +20,10 @@ public class QuanLyHoiNghi extends Application {
 //        
 //        stage.setScene(scene);
 //        stage.show();
+
         
-        Parent root2 = FXMLLoader.load(getClass().getResource("/view/Register.fxml"));
+        
+        Parent root2 = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
 
         stage.setTitle("Hello World");
         stage.setScene(new Scene(root2, 600, 650));
