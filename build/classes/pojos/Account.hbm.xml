@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 7, 2020 8:28:31 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated Jul 13, 2020 5:08:27 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="pojos.Account" table="account" catalog="quanlyhoinghi" optimistic-lock="version">
         <id name="idAccount" type="java.lang.Integer">
@@ -20,16 +20,17 @@
         <property name="email" type="string">
             <column name="Email" length="45" not-null="true" />
         </property>
+        <property name="active" type="boolean">
+            <column name="Active" not-null="true" />
+        </property>
         <property name="isAdmin" type="boolean">
             <column name="IsAdmin" not-null="true" />
         </property>
-        <set name="hoinghis" table="thamgiahoinghi" inverse="false" lazy="true" fetch="select">
+        <set name="thamgiahoinghis" table="thamgiahoinghi" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="IdAccount" not-null="true" />
             </key>
-            <many-to-many entity-name="pojos.Hoinghi">
-                <column name="IdHoiNghi" not-null="true" />
-            </many-to-many>
+            <one-to-many class="pojos.Thamgiahoinghi" />
         </set>
     </class>
 </hibernate-mapping>

@@ -1,5 +1,5 @@
 package pojos;
-// Generated Jul 7, 2020 8:28:30 AM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2020 5:08:27 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -20,19 +20,21 @@ public class Hoinghi  implements java.io.Serializable {
      private byte[] hinhAnh;
      private Date thoiGian;
      private int nguoiThamDu;
-     private Set accounts = new HashSet(0);
+     private boolean active;
+     private Set thamgiahoinghis = new HashSet(0);
 
     public Hoinghi() {
     }
 
 	
-    public Hoinghi(Diadiem diadiem, String tenHoiNghi, Date thoiGian, int nguoiThamDu) {
+    public Hoinghi(Diadiem diadiem, String tenHoiNghi, Date thoiGian, int nguoiThamDu, boolean active) {
         this.diadiem = diadiem;
         this.tenHoiNghi = tenHoiNghi;
         this.thoiGian = thoiGian;
         this.nguoiThamDu = nguoiThamDu;
+        this.active = active;
     }
-    public Hoinghi(Diadiem diadiem, String tenHoiNghi, String moTaNgan, String moTaChiTiet, byte[] hinhAnh, Date thoiGian, int nguoiThamDu, Set accounts) {
+    public Hoinghi(Diadiem diadiem, String tenHoiNghi, String moTaNgan, String moTaChiTiet, byte[] hinhAnh, Date thoiGian, int nguoiThamDu, boolean active, Set thamgiahoinghis) {
        this.diadiem = diadiem;
        this.tenHoiNghi = tenHoiNghi;
        this.moTaNgan = moTaNgan;
@@ -40,7 +42,8 @@ public class Hoinghi  implements java.io.Serializable {
        this.hinhAnh = hinhAnh;
        this.thoiGian = thoiGian;
        this.nguoiThamDu = nguoiThamDu;
-       this.accounts = accounts;
+       this.active = active;
+       this.thamgiahoinghis = thamgiahoinghis;
     }
    
     public Integer getIdHoiNghi() {
@@ -99,12 +102,19 @@ public class Hoinghi  implements java.io.Serializable {
     public void setNguoiThamDu(int nguoiThamDu) {
         this.nguoiThamDu = nguoiThamDu;
     }
-    public Set getAccounts() {
-        return this.accounts;
+    public boolean isActive() {
+        return this.active;
     }
     
-    public void setAccounts(Set accounts) {
-        this.accounts = accounts;
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+    public Set getThamgiahoinghis() {
+        return this.thamgiahoinghis;
+    }
+    
+    public void setThamgiahoinghis(Set thamgiahoinghis) {
+        this.thamgiahoinghis = thamgiahoinghis;
     }
 
 

@@ -1,5 +1,5 @@
 package pojos;
-// Generated Jul 7, 2020 8:28:30 AM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2020 5:08:27 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -15,21 +15,24 @@ public class Diadiem  implements java.io.Serializable {
      private String tenDiaDiem;
      private String diaChi;
      private int sucChua;
+     private boolean active;
      private Set hoinghis = new HashSet(0);
 
     public Diadiem() {
     }
 
 	
-    public Diadiem(String tenDiaDiem, String diaChi, int sucChua) {
+    public Diadiem(String tenDiaDiem, String diaChi, int sucChua, boolean active) {
         this.tenDiaDiem = tenDiaDiem;
         this.diaChi = diaChi;
         this.sucChua = sucChua;
+        this.active = active;
     }
-    public Diadiem(String tenDiaDiem, String diaChi, int sucChua, Set hoinghis) {
+    public Diadiem(String tenDiaDiem, String diaChi, int sucChua, boolean active, Set hoinghis) {
        this.tenDiaDiem = tenDiaDiem;
        this.diaChi = diaChi;
        this.sucChua = sucChua;
+       this.active = active;
        this.hoinghis = hoinghis;
     }
    
@@ -60,6 +63,13 @@ public class Diadiem  implements java.io.Serializable {
     
     public void setSucChua(int sucChua) {
         this.sucChua = sucChua;
+    }
+    public boolean isActive() {
+        return this.active;
+    }
+    
+    public void setActive(boolean active) {
+        this.active = active;
     }
     public Set getHoinghis() {
         return this.hoinghis;

@@ -57,7 +57,7 @@
             <Font name="System Bold" size="35.0" />
          </font>
       </Label>
-      <Label prefHeight="40.0" fx:id="txtNotification" prefWidth="349.0" text="Vui lòng abc" textFill="#e52d2d" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+      <Label prefHeight="40.0" fx:id="txtNotification" prefWidth="349.0" textFill="#e52d2d" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>

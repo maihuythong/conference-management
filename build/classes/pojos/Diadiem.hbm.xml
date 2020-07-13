@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 7, 2020 8:28:31 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated Jul 13, 2020 5:08:27 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="pojos.Diadiem" table="diadiem" catalog="quanlyhoinghi" optimistic-lock="version">
         <id name="idDiaDiem" type="java.lang.Integer">
@@ -16,6 +16,9 @@
         </property>
         <property name="sucChua" type="int">
             <column name="SucChua" not-null="true" />
+        </property>
+        <property name="active" type="boolean">
+            <column name="Active" not-null="true" />
         </property>
         <set name="hoinghis" table="hoinghi" inverse="true" lazy="true" fetch="select">
             <key>

@@ -1,21 +1,30 @@
 package controller;
 
 import connection.Connection;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -82,43 +91,29 @@ public class RegisterController {
         for(int i = 0; i < accounts.size(); ++i){
             System.out.println(accounts.get(i));
         }
-//        btnSignUp.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent actionEvent) {
-//                
-//                Account account = new Account("MHT", "thongthong", "123","mht@mail.com", false);
-                
-//                System.out.print("vcl");
-//                        Connection connection = new Connection();
-//                        SessionFactory sessionFactory = connection.getSessionFactory();
-//                        Session session = sessionFactory.openSession();
-//                        
-//                        String username = txtUsername.getText().toString().trim();
-//                        
-//                        String hql = "from Account u where u.username = :usern";
-//                        System.out.println(username);
-//                        Query queryUser = session.createQuery(hql);
-//                        queryUser.setParameter("usern", username);
-//                        List<Account> results = queryUser.list();
-//                        
-//                        System.out.println(results.size());
-//                        for (Account u : results) {
-//                            System.out.println(u.getIdAccount() + u.getUsername());
-//                        }
-//                        System.out.println("end");
-//                        Transaction transaction = null;
-//                        try {
-//                            transaction = session.beginTransaction();
-//                            session.save(user);
-//                            transaction.commit();
-//                        } catch (HibernateException ex) {
-//                            transaction.rollback();
-//                            System.err.println(ex);
-//                        } finally {session.close();}
-//            }
-//        });
+        
+        txtSignIn.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                System.out.println("click signin");
+                try {
+                    actionSignInClick(mouseEvent);
+                } catch (IOException ex) {
+                    Logger.getLogger(RegisterController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
     }
     
+    private void actionSignInClick(MouseEvent mouseEvent) throws IOException {
+        Parent parent = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
+        Scene scene = new Scene(parent);
+        Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        stage.centerOnScreen();
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
+    }
     
     public void ActionSignUp(ActionEvent actionEvent){
        getFullText();
@@ -135,7 +130,6 @@ public class RegisterController {
             txtNotification.setText("Tên đăng nhập đã tồn tại! Vui lòng chọn tên mới");
             return;
        }
-       
        
        if(password.equals("")){
             txtNotification.setText("Vui lòng nhập mật khẩu!");
@@ -159,8 +153,8 @@ public class RegisterController {
        }
        
        txtNotification.setText("");
-       Account newAccount = new Account(fullName, userName, password, email, false);
-       
+       Account newAccount = new Account(fullName, userName, password, email, true, false);
+       System.out.println(newAccount.toString());
        if(saveAccount(newAccount)){
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Successful");
@@ -169,7 +163,7 @@ public class RegisterController {
  
             alert.showAndWait();
        }else{
-           Alert alert = new Alert(AlertType.ERROR);
+            Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Fail");
             alert.setHeaderText("");
             alert.setContentText("Có lỗi gì đó xảy ra! Bạn vui lòng thử lại!");
@@ -181,8 +175,8 @@ public class RegisterController {
     public void getFullText(){
         fullName = txtFullName.getText().trim();
         userName = txtUsername.getText().trim();
-        password = txtPassword.getText().trim();
-        password2 = txtPassword2.getText().trim();
+        password = txtPassword.getText();
+        password2 = txtPassword2.getText();
         email = txtEmail.getText().trim();
     }
     
