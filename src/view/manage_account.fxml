@@ -1,18 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ListView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Text layoutX="263.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quản lý tài khoản" wrappingWidth="173.336669921875">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Text>
-      <ListView fx:id="listView" layoutX="14.0" layoutY="84.0" prefHeight="604.0" prefWidth="680.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="85.0" />
-   </children>
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManageAccount">
+    <children>
+        <Text layoutX="363.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quản lý tài khoản" wrappingWidth="173.336669921875">
+            <font>
+                <Font size="22.0" />
+            </font>
+        </Text>
+        <TableView fx:id="table" layoutX="14.0" layoutY="65.0" prefHeight="560.0" prefWidth="880.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="125.0">
+            <columns>
+                <TableColumn fx:id="idCol" prefWidth="55.0" text="ID" />
+                <TableColumn fx:id="nameCol" minWidth="7.199981689453125" prefWidth="252.80001068115234" text="Họ tên" />
+                <TableColumn fx:id="usernameCol" minWidth="7.199981689453125" prefWidth="218.39999389648438" text="Tên đăng nhập" />
+                <TableColumn fx:id="emailCol" minWidth="7.199981689453125" prefWidth="221.5999755859375" text="Email" />
+                <TableColumn fx:id="statusCol" minWidth="7.199981689453125" prefWidth="113.60009765625" text="Trạng thái" />
+            </columns>
+        </TableView>
+        <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="78.0" prefHeight="30.0" prefWidth="873.0">
+            <children>
+                <TextField fx:id="search_txt" onKeyPressed="#searchKeyWord" prefHeight="26.0" prefWidth="338.0">
+                    <HBox.margin>
+                        <Insets />
+                    </HBox.margin>
+                </TextField>
+                <ImageView fx:id="search_btn" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0">
+                    <HBox.margin>
+                        <Insets />
+                    </HBox.margin>
+                    <image>
+                        <Image url="@../img/search.png" />
+                    </image>
+                    <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                    </cursor>
+                </ImageView>
+            <CheckBox fx:id="cbId" mnemonicParsing="false" text="ID">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="cbName" mnemonicParsing="false" text="Họ tên">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </CheckBox>
+            <CheckBox fx:id="cbUsername" mnemonicParsing="false" text="Tên đăng nhập">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </CheckBox>
+            <CheckBox fx:id="cbEmail" mnemonicParsing="false" text="Email">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </CheckBox>
+            </children>
+        </HBox>
+    </children>
 </AnchorPane>

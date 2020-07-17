@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0"
+            style="-fx-border-color: #0077BE; -fx-border-width: 3px;" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserInfo">
+   <children>
+      <HBox layoutX="24.0" layoutY="47.0" prefHeight="30.0" prefWidth="280.0" AnchorPane.leftAnchor="10.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Họ tên:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="fullName" strokeType="OUTSIDE" strokeWidth="0.0" text="Mai Huy Thông" wrappingWidth="223.2359619140625">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+      </HBox>
+      <HBox layoutY="89.0" prefHeight="30.0" prefWidth="280.0" AnchorPane.leftAnchor="10.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="email" strokeType="OUTSIDE" strokeWidth="0.0" text="maihuythong99@gmail.com" wrappingWidth="235.2359619140625">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+      </HBox>
+      <HBox layoutX="302.0" layoutY="47.0" prefHeight="40.0" prefWidth="290.0" AnchorPane.leftAnchor="299.0" AnchorPane.rightAnchor="11.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tên đăng nhập:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="username" strokeType="OUTSIDE" strokeWidth="0.0" text="maihuythong99@gmail.com123123213" wrappingWidth="176.7999267578125">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+      </HBox>
+      <HBox fx:id="status_box" layoutX="300.0" layoutY="89.0" prefHeight="30.0" prefWidth="290.0" AnchorPane.rightAnchor="10.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trạng thái:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="status" strokeType="OUTSIDE" strokeWidth="0.0" text="maihuythong99@gmail.com" wrappingWidth="211.23583984375">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+      </HBox>
+      <HBox layoutY="130.0" prefHeight="30.0" prefWidth="280.0" AnchorPane.leftAnchor="10.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="time2" strokeType="OUTSIDE" strokeWidth="0.0" text="1" wrappingWidth="223.2359619140625">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+      </HBox>
+      <Text layoutX="203.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Các hội nghị tham gia">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <TableView fx:id="conf_table" layoutX="10.0" layoutY="226.0" prefHeight="463.0" prefWidth="579.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+        <columns>
+          <TableColumn fx:id="idCol" maxWidth="30.0" minWidth="30.0" prefWidth="28.79998779296875" text="ID" />
+          <TableColumn fx:id="confCol" maxWidth="230.0" minWidth="230.0" prefWidth="230.0" text="Tên hội nghị" />
+            <TableColumn fx:id="timeCol" maxWidth="140.0" minWidth="140.0" prefWidth="140.0" text="Thời gian" />
+            <TableColumn fx:id="addrCol" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="Địa điểm" />
+        </columns>
+      </TableView>
+      <Button fx:id="block_btn" layoutX="247.0" layoutY="147.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="116.0" text="Bỏ chặn" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="230.0" />
+   </children>
+</AnchorPane>

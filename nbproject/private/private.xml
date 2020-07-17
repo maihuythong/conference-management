@@ -3,31 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/view/Accountscreen.fxml</file>
-            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/connection/Connection.java</file>
-            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/view/change_password.fxml</file>
-            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/controller/RegisterController.java</file>
-            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/pojos/Hoinghi.hbm.xml</file>
-            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/pojos/Account.java</file>
-            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/controller/MainScreenController.java</file>
-            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/pojos/Diadiem.java</file>
-            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/pojos/ThamgiahoinghiId.java</file>
-            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/pojos/Hoinghi.java</file>
-            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/view/Register.fxml</file>
-            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/pojos/Thamgiahoinghi.java</file>
-            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/pojos/Diadiem.hbm.xml</file>
-            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/quanlyhoinghi/QuanLyHoiNghi.java</file>
+            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/controller/AdminManage.java</file>
             <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/controller/ManageAccount.java</file>
-            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/controller/ChangePassword.java</file>
-            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/utils/PasswordAuthentication.java</file>
-            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/pojos/Thamgiahoinghi.hbm.xml</file>
-            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/controller/LoginController.java</file>
-            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/controller/AccountController.java</file>
-            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/nbproject/build-impl.xml</file>
-            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/account/StorageAccount.java</file>
-            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/controller/EditInfomation.java</file>
-            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/pojos/Account.hbm.xml</file>
-            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/view/Mainscreen.fxml</file>
+            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/controller/MainScreenController.java</file>
         </group>
     </open-files>
 </project-private>
