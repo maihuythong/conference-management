@@ -23,7 +23,7 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <ComboBox fx:id="duration" prefHeight="26.0" prefWidth="64.0">
+            <ComboBox fx:id="duration" onAction="#durationChoose" prefHeight="26.0" prefWidth="64.0">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
@@ -42,12 +42,12 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <DatePicker fx:id="date">
+            <DatePicker fx:id="date" onAction="#dateChoose">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
             </DatePicker>
-            <ComboBox fx:id="hour" prefHeight="26.0" prefWidth="90.0">
+            <ComboBox fx:id="hour" onAction="#hourChoose" prefHeight="26.0" prefWidth="90.0">
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
@@ -57,7 +57,7 @@
                   <Insets left="5.0" />
                </HBox.margin>
             </Text>
-            <ComboBox fx:id="minute" prefHeight="26.0" prefWidth="90.0">
+            <ComboBox fx:id="minute" onAction="#minuteChoose" prefHeight="26.0" prefWidth="90.0">
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
@@ -76,7 +76,7 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <ComboBox fx:id="diadiem" prefHeight="26.0" prefWidth="500.0">
+            <ComboBox fx:id="diadiem" onAction="#placeChoose" prefHeight="26.0" prefWidth="500.0">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>

@@ -117,7 +117,17 @@ public class LoginController {
            txtNotification.setText("Tên đăng nhập hoặc mật khẩu không đúng! Vui lòng thử lại");
             return;
        }
+        
        Account logAccount = pws.get(0);
+       if(!logAccount.isActive()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Fail");
+            alert.setHeaderText("");
+            alert.setContentText("Tài khoản của bạn đã bị chặn! Vui lòng liên hệ Admin để trợ giúp");
+
+            alert.showAndWait();
+            return;
+       }
        
        if(pwAuth.authenticate(password, logAccount.getPassword())){
             StorageAccount acc = StorageAccount.getInstance();

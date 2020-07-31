@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -13,7 +20,54 @@
             <Font size="22.0" />
          </font>
       </Text>
-      <TableView fx:id="table" layoutY="103.0" prefHeight="598.0" prefWidth="1200.0">
+      <HBox alignment="CENTER_LEFT" layoutY="81.0" prefHeight="30.0" prefWidth="1200.0">
+         <children>
+            <TextField fx:id="search_txt" onKeyReleased="#searchKeyWord" prefHeight="26.0" prefWidth="309.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </TextField>
+            <ImageView fx:id="search_btn" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <image>
+                  <Image url="@../img/search.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </ImageView>
+            <CheckBox fx:id="cbName" mnemonicParsing="false" onAction="#nameAction" text="Tên hội nghị">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </CheckBox>
+            <CheckBox fx:id="cbPlace" mnemonicParsing="false" onAction="#addrAction" text="Địa điểm">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </CheckBox>
+            <CheckBox fx:id="cbSize" mnemonicParsing="false" onAction="#sizeAction" text="Sức chứa">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </CheckBox>
+         </children>
+         <padding>
+            <Insets left="30.0" />
+         </padding>
+      </HBox>
+      <TableView fx:id="table" layoutY="135.0" prefHeight="566.0" prefWidth="1200.0">
          <columns>
             <TableColumn fx:id="id" maxWidth="40.0" prefWidth="40.0" text="ID" />
             <TableColumn fx:id="name" maxWidth="400.0" prefWidth="245.0" text="Tên hội nghị" />

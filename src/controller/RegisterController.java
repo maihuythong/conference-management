@@ -14,19 +14,25 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.Window;
+import javafx.stage.WindowEvent;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -69,6 +75,9 @@ public class RegisterController {
 
     @FXML
     private Label txtNotification;
+    
+    @FXML
+    private GridPane gridPane;
 
     //HBN
     private Connection connection = new Connection();
@@ -156,6 +165,38 @@ public class RegisterController {
             alert.setContentText("Bạn đã đăng ký tài khoản thành công!");
  
             alert.showAndWait();
+            
+            
+            Parent parent = null;
+            try {
+                parent = FXMLLoader.load(getClass().getResource("/view/Mainscreen.fxml"));
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            
+            
+            
+            Dialog<?> dialog = new Dialog<>();
+            dialog.initOwner(gridPane.getScene().getWindow());
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/view/Login.fxml"));
+            try {
+                dialog.getDialogPane().setContent(fxmlLoader.load());
+                dialog.initStyle(StageStyle.DECORATED);
+                dialog.setResizable(false);
+            } catch(IOException e) {
+                System.out.println("Couldn't load the dialog");
+                e.printStackTrace();
+                return;
+            }
+
+            Window window = dialog.getDialogPane().getScene().getWindow();
+            window.setOnCloseRequest(event -> System.out.println("close"));
+
+            dialog.showAndWait();
+            Stage stage = (Stage) btnSignUp.getScene().getWindow();
+            stage.close();
+            return;
        }else{
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Fail");

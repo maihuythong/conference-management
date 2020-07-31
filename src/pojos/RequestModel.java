@@ -1,5 +1,7 @@
 package pojos;
 
+import java.text.SimpleDateFormat;
+
 public class RequestModel {
     private Account account;
     private Hoinghi conf;
@@ -19,7 +21,9 @@ public class RequestModel {
         this.fullname = account.getHoTen();
         this.email = account.getEmail();
         this.confName = conf.getTenHoiNghi();
-        this.time = conf.getDateString();
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss dd-MM-yyy");
+        this.time = sdf.format(conf.getThoiGian());
         this.tghoinghiId = new ThamgiahoinghiId(account.getIdAccount(), conf.getIdHoiNghi());
     }
 

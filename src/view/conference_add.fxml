@@ -47,7 +47,7 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </DatePicker>
-            <ComboBox fx:id="hour" onAction="#hourChoose" prefHeight="26.0" prefWidth="69.0">
+            <ComboBox fx:id="hour" onAction="#hourChoose" prefHeight="26.0" prefWidth="74.0">
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>

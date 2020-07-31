@@ -54,7 +54,6 @@ public class About {
         }
         if(!sa.getIsAdmin()){
             manage.setVisible(false);
-        
         }
         dashboard.setOnMouseClicked(e -> {
             Parent parent = null;
@@ -85,7 +84,7 @@ public class About {
             public void handle(MouseEvent mouseEvent) {
                 Parent parent = null;
                 try {
-                    parent = FXMLLoader.load(getClass().getResource("/view/admin_manage.fxml"));
+                    parent = FXMLLoader.load(getClass().getResource("/view/admin_manage2.fxml"));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -111,7 +110,7 @@ public class About {
         account.setOnMouseClicked(e ->{
             Parent parent = null;
             try {
-                parent = FXMLLoader.load(getClass().getResource("/view/Accountscreen.fxml"));
+                parent = FXMLLoader.load(getClass().getResource("/view/Accountscreen2.fxml"));
             } catch (IOException ev) {
                 ev.printStackTrace();
             }

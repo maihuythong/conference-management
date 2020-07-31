@@ -168,13 +168,16 @@ public class MainScreenController {
         }
         if(!sa.getIsAdmin()){
             manage.setVisible(false);
+        }else{
+            manage.setVisible(true);
         }
+        
         manage.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 Parent parent = null;
                 try {
-                    parent = FXMLLoader.load(getClass().getResource("/view/admin_manage.fxml"));
+                    parent = FXMLLoader.load(getClass().getResource("/view/admin_manage2.fxml"));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -210,26 +213,26 @@ public class MainScreenController {
 
         about.setOnMouseClicked(e -> {
             Parent parent = null;
-                try {
-                    parent = FXMLLoader.load(getClass().getResource("/view/about.fxml"));
-                } catch (IOException ev) {
-                    ev.printStackTrace();
+            try {
+                parent = FXMLLoader.load(getClass().getResource("/view/about.fxml"));
+            } catch (IOException ev) {
+                ev.printStackTrace();
+            }
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+
+            stage.addEventHandler(WindowEvent.WINDOW_SHOWN, new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+                    stage.setX((screenBounds.getWidth() - stage.getWidth()) / 2);
+                    stage.setY((screenBounds.getHeight() - stage.getHeight()) / 2);
                 }
-                Scene scene = new Scene(parent);
-                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            });
 
-                stage.addEventHandler(WindowEvent.WINDOW_SHOWN, new EventHandler<WindowEvent>() {
-                    @Override
-                    public void handle(WindowEvent event) {
-                        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-                        stage.setX((screenBounds.getWidth() - stage.getWidth()) / 2);
-                        stage.setY((screenBounds.getHeight() - stage.getHeight()) / 2);
-                    }
-                });
-
-                stage.setResizable(false);
-                stage.setScene(scene);
-                stage.show();
+            stage.setResizable(false);
+            stage.setScene(scene);
+            stage.show();
         });
 
 
@@ -312,7 +315,7 @@ public class MainScreenController {
     }
     
     private void actionAccountClick(MouseEvent event) throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("/view/Accountscreen.fxml"));
+        Parent parent = FXMLLoader.load(getClass().getResource("/view/Accountscreen2.fxml"));
         Scene scene = new Scene(parent);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 

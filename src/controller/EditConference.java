@@ -3,7 +3,6 @@ package controller;
 
 import connection.Connection;
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -14,17 +13,14 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -33,7 +29,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javax.imageio.ImageIO;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -103,6 +98,9 @@ public class EditConference {
 
     private Hoinghi currentConference;
     private boolean isChangeImage = false;
+    
+    private boolean validDateTime = false;
+
 
     @FXML
     void initialize() {
@@ -132,6 +130,12 @@ public class EditConference {
             } catch (ParseException parseException) {
                 parseException.printStackTrace();
             }
+            
+            try {
+                timeCheck();
+            } catch (ParseException ex) {
+                Logger.getLogger(EditConference.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
             System.out.println(image == null);
             System.out.println(titleConf.equals("") );
@@ -142,8 +146,13 @@ public class EditConference {
             System.out.println(hourCof == null );
             System.out.println(minuteConf == null);
             System.out.println(placeSelected == null);
+            if(!validDateTime){
+                notiFailDate();
+                return;
+            }
             if (image == null || titleConf.equals("") || dateTime.equals("") || shortDesConf.equals("") ||
                 desConf.equals("") || durationConf == null || hourCof == null || minuteConf == null || placeSelected == null){
+
                 Alert alert2 = new Alert(Alert.AlertType.ERROR);
                 alert2.setTitle("Không hợp lệ");
                 alert2.setHeaderText(null);
@@ -277,30 +286,131 @@ public class EditConference {
     private void getInfo() throws ParseException {
         titleConf = title.getText().trim();
         LocalDate localDate = date.getValue();
-        if (localDate == null){
-            Alert alert2 = new Alert(Alert.AlertType.ERROR);
-            alert2.setTitle("Không hợp lệ");
-            alert2.setHeaderText(null);
-            alert2.setContentText("Vui lòng chọn thời gian bắt đầu hội nghị!");
-            alert2.showAndWait();
+        Instant instant = null;
+        try{
+            instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
+            dateConf = Date.from(instant);
+            hourCof = hour.getValue();
+            minuteConf = minute.getValue();
+            durationConf = duration.getValue();
+            shortDesConf = short_des.getText();
+            desConf = description.getText();
+            placeSelected = diadiem.getValue();
+            try {
+                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                   String temp = sdf.format(dateConf);
+                   temp = temp.substring(0, 10);
+                   temp += " "+ hourCof +":"+minuteConf+":00";
+                   dateConf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(temp);
+                   dateTime = sdf.format(dateConf);
+            }catch(ParseException e){
+                System.out.println("Lỗi chuyển đổi ngày");
+            }
+        }catch(Exception e){
+            
         }
-        Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
-        dateConf = Date.from(instant);
-        hourCof = hour.getValue();
-        minuteConf = minute.getValue();
-        durationConf = duration.getValue();
-        shortDesConf = short_des.getText();
-        desConf = description.getText();
-        placeSelected = diadiem.getValue();
+    }
+    
+    private void notiFailDate(){
+        if(!validDateTime){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Không hợp lệ");
+            alert.setHeaderText(null);
+            alert.setContentText("Thời gian lựa chọn đã có hội nghị diễn ra tại địa điểm!");
+            alert.showAndWait();
+        }
+    }
+    
+    
+    @FXML
+    void dateChoose(ActionEvent event) throws ParseException {
+        timeCheck();
+    }
+
+    @FXML
+    void durationChoose(ActionEvent event) throws ParseException {
+        timeCheck();
+    }
+
+    @FXML
+    void hourChoose(ActionEvent event) throws ParseException {
+        timeCheck();
+    }
+
+    @FXML
+    void minuteChoose(ActionEvent event) throws ParseException {
+        timeCheck();
+    }
+
+    @FXML
+    void placeChoose(ActionEvent event) throws ParseException {
+        timeCheck();
+    }
+    
+    
+    private void timeCheck() throws ParseException{
+        getInfo();
+        validDateTime = false;
+        if(date.equals("") || hourCof == null || minuteConf == null || durationConf == null || placeSelected == null){
+            return;
+        }
+        LocalDate localDate = date.getValue();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+      
+        String startStr = localDate + " " + hourCof + ":" + minuteConf + ":00";
+        String endStr =  localDate + " " + (hourCof + durationConf) + ":" + minuteConf + ":00";
+        
         try {
-             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-               String temp = sdf.format(dateConf);
-               temp = temp.substring(0, 10);
-               temp += " "+ hourCof +":"+minuteConf+":00";
-               dateConf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(temp);
-               dateTime = sdf.format(dateConf);
-        }catch(ParseException e){
-            System.out.println("Lỗi chuyển đổi ngày");
+            Date start = sdf.parse(startStr);
+            Date end = sdf.parse(endStr);
+            
+            Connection connection = new Connection();
+            SessionFactory sessionFactory = connection.getSessionFactory();
+            Session session = sessionFactory.openSession();
+            Transaction transaction = null;
+
+            transaction = session.beginTransaction();
+            String hql = "from Hoinghi h where diadiem = :place";
+            Query query = session.createQuery(hql);
+            query.setParameter("place", placeSelected);
+
+            List<Hoinghi> list = query.list();
+            
+            for(int i = 0; i < list.size(); ++i){
+                Date dateStart = list.get(i).getThoiGian();
+                Integer dur = list.get(i).getKhoangThoiGian();
+                String dateStartStr = sdf.format(dateStart);
+                String dateEndStr = dateStartStr.substring(0,11) + (Integer.valueOf(dateStartStr.substring(11,13)) + dur) + dateStartStr.substring(13);
+                Date startDate = sdf.parse(dateStartStr);
+                Date endDate = sdf.parse(dateEndStr);
+                
+                if((start.compareTo(startDate) > 0 && start.compareTo(endDate) < 0) ||
+                        (end.compareTo(startDate) > 0 && end.compareTo(endDate) < 0)){
+                    notiFailDate();
+                    return;
+                }
+                if(start.compareTo(startDate) < 0 && end.compareTo(endDate) > 0){
+                    notiFailDate();
+                    return;
+                }
+                if((start.compareTo(startDate) < 0 && end.compareTo(endDate) > 0) || 
+                        (start.compareTo(endDate) < 0 && end.compareTo(endDate) > 0)){
+                    notiFailDate();
+                    return;
+                }
+            }
+            validDateTime = true;
+            transaction.commit();
+            transaction = null;
+            session.close();
+            
+            
+        } catch (ParseException ex) {
+            Logger.getLogger(AddConference.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        System.out.println(validDateTime);
+        
     }
 }

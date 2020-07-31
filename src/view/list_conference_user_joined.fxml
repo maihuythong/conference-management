@@ -13,7 +13,7 @@
             <Font size="22.0" />
          </font>
       </Text>
-      <TableView fx:id="table" layoutY="103.0" prefHeight="598.0" prefWidth="1200.0">
+      <TableView fx:id="table" layoutY="135.0" prefHeight="566.0" prefWidth="1200.0">
          <columns>
             <TableColumn fx:id="id" maxWidth="40.0" prefWidth="40.0" text="ID" />
             <TableColumn fx:id="name" maxWidth="400.0" prefWidth="245.0" text="Tên hội nghị" />

@@ -180,7 +180,7 @@ public class ConferenceInfoMain {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Thành công");
         alert.setHeaderText("");
-        alert.setContentText("Bạn dã gửi yêu cầu tham gia hội nghị thành công!");
+        alert.setContentText("Bạn đã gửi yêu cầu tham gia hội nghị thành công!");
         alert.showAndWait();
         session.close();
         leave = true;
@@ -213,7 +213,7 @@ public class ConferenceInfoMain {
                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
                             alert.setTitle("Thông báo");
                             alert.setHeaderText("");
-                            alert.setContentText("Bạn dã tham gia hội nghị này trước đó!");
+                            alert.setContentText("Bạn đã tham gia hội nghị này trước đó!");
                             alert.showAndWait();
                        }else{
                            join.setText("Hủy đăng ký");
@@ -238,6 +238,15 @@ public class ConferenceInfoMain {
     }
 
     private void leaveConference() {
+        if(currentConference.getStatus().equals("Đã diễn ra")){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Thông báo");
+            alert.setHeaderText("");
+            alert.setContentText("Hội nghị đã diễn ra không thể hủy tham gia!");
+            alert.showAndWait();
+            return;
+        }
+        
         Connection connection = new Connection();
         SessionFactory sessionFactory = connection.getSessionFactory();
         Session session = sessionFactory.openSession();
@@ -268,7 +277,7 @@ public class ConferenceInfoMain {
                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
                             alert.setTitle("Thông báo");
                             alert.setHeaderText("");
-                            alert.setContentText("Bạn dã hủy tham gia hội nghị!");
+                            alert.setContentText("Bạn đã hủy tham gia hội nghị!");
                             transaction.commit();
                             session.close();
                             alert.showAndWait();

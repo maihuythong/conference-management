@@ -7,18 +7,12 @@ import java.net.URL;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -29,10 +23,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.stage.WindowEvent;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -143,22 +135,9 @@ public class EditInfomation {
                 cAccount.setAccount(logAccount);
                 session.close();
                 transaction = null;
-                
-                Parent parent = FXMLLoader.load(getClass().getResource("/view/Accountscreen.fxml"));
-                Scene scene = new Scene(parent);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.addEventHandler(WindowEvent.WINDOW_SHOWN, new EventHandler<WindowEvent>() {
-                    @Override
-                    public void handle(WindowEvent event) {
-                        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-                        stage.setX((screenBounds.getWidth() - stage.getWidth()) / 2);
-                        stage.setY((screenBounds.getHeight() - stage.getHeight()) / 2);
-                    }
-                });
 
-                stage.setResizable(false);
-                stage.setScene(scene);
-                stage.show();
+                Stage stage = (Stage) btn_finish.getScene().getWindow();
+                stage.close();
             }
         }else{
             transaction.rollback();

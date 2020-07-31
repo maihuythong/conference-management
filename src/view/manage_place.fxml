@@ -31,7 +31,7 @@
       </TableView>
       <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="78.0" prefHeight="30.0" prefWidth="873.0">
          <children>
-            <TextField fx:id="search_txt" onKeyPressed="#searchKeyWord" prefHeight="26.0" prefWidth="338.0">
+            <TextField fx:id="search_txt" onKeyReleased="#searchKeyWord" prefHeight="26.0" prefWidth="338.0">
                <HBox.margin>
                   <Insets />
                </HBox.margin>

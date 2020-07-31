@@ -12,7 +12,6 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -124,13 +123,13 @@ public class AddConference {
 
         add_btn.setOnMouseClicked(e -> {
             getInfo();
-
+            if(!validDateTime){
+                notiFailDate();
+                return;
+            }
             if (image == null || titleConf.equals("") || dateTime.equals("") || shortDesConf.equals("") ||
                 desConf.equals("") || durationConf == null || hourCof == null || minuteConf == null || placeSelected == null){
-                if(!validDateTime){
-                    notiFailDate();
-                    return;
-                }
+
                 Alert alert2 = new Alert(Alert.AlertType.ERROR);
                 alert2.setTitle("Không hợp lệ");
                 alert2.setHeaderText(null);
@@ -206,13 +205,6 @@ public class AddConference {
     private void getInfo() {
         titleConf = title.getText().trim();
         LocalDate localDate = date.getValue();
-//        if (localDate == null){
-//            Alert alert2 = new Alert(Alert.AlertType.ERROR);
-//            alert2.setTitle("Không hợp lệ");
-//            alert2.setHeaderText(null);
-//            alert2.setContentText("Vui lòng chọn thời gian bắt đầu hội nghị!");
-//            alert2.showAndWait();
-//        }
         Instant instant = null;
         try{
             instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
