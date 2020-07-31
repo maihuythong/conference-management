@@ -31,7 +31,7 @@
         </TableView>
         <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="78.0" prefHeight="30.0" prefWidth="873.0">
             <children>
-                <TextField fx:id="search_txt" onKeyPressed="#searchKeyWord" prefHeight="26.0" prefWidth="338.0">
+                <TextField fx:id="search_txt" onKeyReleased="#searchKeyWord" prefHeight="26.0" prefWidth="338.0">
                     <HBox.margin>
                         <Insets />
                     </HBox.margin>
@@ -47,20 +47,12 @@
                         <Cursor fx:constant="OPEN_HAND" />
                     </cursor>
                 </ImageView>
-            <CheckBox fx:id="cbId" mnemonicParsing="false" text="ID">
+            <CheckBox fx:id="cbId" mnemonicParsing="false" onAction="#idAction" text="ID">
                <font>
                   <Font size="14.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="cbName" mnemonicParsing="false" text="Họ tên">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="15.0" />
-               </HBox.margin>
-            </CheckBox>
-            <CheckBox fx:id="cbUsername" mnemonicParsing="false" text="Tên đăng nhập">
+            <CheckBox fx:id="cbName" mnemonicParsing="false" onAction="#nameAction" text="Họ tên">
                <font>
                   <Font size="14.0" />
                </font>
@@ -68,7 +60,15 @@
                   <Insets left="15.0" />
                </HBox.margin>
             </CheckBox>
-            <CheckBox fx:id="cbEmail" mnemonicParsing="false" text="Email">
+            <CheckBox fx:id="cbUsername" mnemonicParsing="false" onAction="#unameAction" text="Tên đăng nhập">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </CheckBox>
+            <CheckBox fx:id="cbEmail" mnemonicParsing="false" onAction="#emailAction" text="Email">
                <font>
                   <Font size="14.0" />
                </font>

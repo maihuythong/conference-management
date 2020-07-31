@@ -9,6 +9,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.binding.SetExpression;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,6 +35,8 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 
 
@@ -55,7 +58,7 @@ public class AccountController {
 
     @FXML
     void initialize() {
-        
+        hbox_control.getChildren().clear();
         StorageAccount acc = StorageAccount.getInstance();
         int id = acc.getAccountId();
         System.out.println(id);
@@ -179,6 +182,30 @@ public class AccountController {
                     }
                 }
             });
+            
+            vBox3.setOnMouseClicked(e -> {
+                Dialog<?> dialog = new Dialog<>();
+                dialog.initOwner(accountBorderPane.getScene().getWindow());
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/view/list_account_joined.fxml"));
+                try {
+                    dialog.getDialogPane().setContent(fxmlLoader.load());
+                    ListConferenceAccountJoined list =  fxmlLoader.getController();
+                    list.getConfData(acc.getAccount().getThamgiahoinghis());
+                    dialog.initStyle(StageStyle.DECORATED);
+                    dialog.setResizable(false);
+                } catch(IOException ex) {
+                    System.out.println("Couldn't load the dialog");
+                    ex.printStackTrace();
+                    return;
+                }
+
+                Window window = dialog.getDialogPane().getScene().getWindow();
+                window.setOnCloseRequest(event -> System.out.println("close"));
+
+                dialog.showAndWait();
+                initialize();
+            });
         }
         
         return_home.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -187,7 +214,7 @@ public class AccountController {
                     try {
                         System.out.println("click return");
                         Parent parent = FXMLLoader.load(getClass().getResource("/view/Mainscreen.fxml"));
-                        Scene scene = new Scene(parent, 990, 700);
+                        Scene scene = new Scene(parent);
                         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
                         
                         stage.addEventHandler(WindowEvent.WINDOW_SHOWN, new EventHandler<WindowEvent>() {
@@ -211,55 +238,69 @@ public class AccountController {
     }
     
     private void info(MouseEvent mouseEvent) throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("/view/edit_infomation.fxml"));
-        Scene scene = new Scene(parent);
-        Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-        stage.addEventHandler(WindowEvent.WINDOW_SHOWN, new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-                stage.setX((screenBounds.getWidth() - stage.getWidth()) / 2);
-                stage.setY((screenBounds.getHeight() - stage.getHeight()) / 2);
-            }
-        });
-        stage.setResizable(false);
-        stage.setScene(scene);
-        stage.show();  
+        Dialog<?> dialog = new Dialog<>();
+        dialog.initOwner(accountBorderPane.getScene().getWindow());
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/view/edit_infomation.fxml"));
+        try {
+            dialog.getDialogPane().setContent(fxmlLoader.load());
+            dialog.initStyle(StageStyle.DECORATED);
+            dialog.setResizable(false);
+        } catch(IOException e) {
+            System.out.println("Couldn't load the dialog");
+            e.printStackTrace();
+            return;
+        }
+
+        Window window = dialog.getDialogPane().getScene().getWindow();
+        window.setOnCloseRequest(event -> System.out.println("close"));
+
+        dialog.showAndWait();
+        initialize();
     }
     
      private void login(MouseEvent mouseEvent) throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
-        Scene scene = new Scene(parent);
-        Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-        stage.addEventHandler(WindowEvent.WINDOW_SHOWN, new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-                stage.setX((screenBounds.getWidth() - stage.getWidth()) / 2);
-                stage.setY((screenBounds.getHeight() - stage.getHeight()) / 2);
-            }
-        });
-        stage.setResizable(false);
-        stage.setScene(scene);
-        stage.show();
+        Dialog<?> dialog = new Dialog<>();
+        dialog.initOwner(accountBorderPane.getScene().getWindow());
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/view/Login.fxml"));
+        try {
+            dialog.getDialogPane().setContent(fxmlLoader.load());
+            dialog.initStyle(StageStyle.DECORATED);
+            dialog.setResizable(false);
+        } catch(IOException e) {
+            System.out.println("Couldn't load the dialog");
+            e.printStackTrace();
+            return;
+        }
+
+        Window window = dialog.getDialogPane().getScene().getWindow();
+        window.setOnCloseRequest(event -> System.out.println("close"));
+
+        dialog.showAndWait();
+        initialize();
      }
     
     private void register(MouseEvent event) throws IOException{
-        Parent parent = FXMLLoader.load(getClass().getResource("/view/Register.fxml"));
-        Scene scene = new Scene(parent);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        
-        stage.addEventHandler(WindowEvent.WINDOW_SHOWN, new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-                stage.setX((screenBounds.getWidth() - stage.getWidth()) / 2);
-                stage.setY((screenBounds.getHeight() - stage.getHeight()) / 2);
-            }
-        });
-        stage.setResizable(false);
-        stage.setScene(scene);
-        stage.show();
+        Dialog<?> dialog = new Dialog<>();
+        dialog.initOwner(accountBorderPane.getScene().getWindow());
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/view/Register.fxml"));
+        try {
+            dialog.getDialogPane().setContent(fxmlLoader.load());
+            dialog.initStyle(StageStyle.DECORATED);
+            dialog.setResizable(false);
+        } catch(IOException e) {
+            System.out.println("Couldn't load the dialog");
+            e.printStackTrace();
+            return;
+        }
+
+        Window window = dialog.getDialogPane().getScene().getWindow();
+        window.setOnCloseRequest(e -> System.out.println("close"));
+
+        dialog.showAndWait();
+        initialize();
         
     }
     
@@ -276,20 +317,7 @@ public class AccountController {
             StorageAccount acc = StorageAccount.getInstance();
             acc.setAccountId(0);
             acc.setIsAdmin(false);
-            Parent parent = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
-            Scene scene = new Scene(parent);
-            Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-            stage.addEventHandler(WindowEvent.WINDOW_SHOWN, new EventHandler<WindowEvent>() {
-                @Override
-                public void handle(WindowEvent event) {
-                    Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-                    stage.setX((screenBounds.getWidth() - stage.getWidth()) / 2);
-                    stage.setY((screenBounds.getHeight() - stage.getHeight()) / 2);
-                }
-            });
-            stage.setResizable(false);
-            stage.setScene(scene);
-            stage.show();
+            initialize();
         }
      }
     

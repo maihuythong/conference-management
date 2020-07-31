@@ -105,11 +105,11 @@ public class AdminManage {
         hbox_control.setMargin(vBox4 ,new Insets(0,0,0,50));
 
         vBox1.setOnMouseClicked(e -> {
-
+            actionConferenceClick();
         });
 
         vBox2.setOnMouseClicked(e -> {
-
+            actionPlaceClick(e);
         });
 
         vBox3.setOnMouseClicked(e -> {
@@ -121,7 +121,7 @@ public class AdminManage {
         });
 
         vBox4.setOnMouseClicked(e -> {
-
+            actionRequest();
         });
 
         return_home.setOnMouseClicked(e -> {
@@ -150,6 +150,31 @@ public class AdminManage {
             stage.show();
         });
     }
+    
+    
+    private void actionConferenceClick() {
+        Dialog<?> dialog = new Dialog<>();
+        dialog.initOwner(borderPane.getScene().getWindow());
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/view/manage_conference.fxml"));
+        try {
+            dialog.getDialogPane().setContent(fxmlLoader.load());
+            dialog.initStyle(StageStyle.DECORATED);
+            dialog.setResizable(false);
+            dialog.getDialogPane().setPrefSize(900, 700);
+            centerStage(dialog,916,739);
+
+        } catch(IOException ex) {
+            System.out.println("Couldn't load the dialog");
+            ex.printStackTrace();
+            return;
+        }
+
+        Window window = dialog.getDialogPane().getScene().getWindow();
+        window.setOnCloseRequest(event -> System.out.println("close"));
+
+        dialog.show();
+    }
 
     private void actionAccountClick(MouseEvent e) throws IOException {
         Dialog<?> dialog = new Dialog<>();
@@ -175,5 +200,58 @@ public class AdminManage {
         dialog.show();
     }
 
+    private void actionPlaceClick(MouseEvent e) {
+        Dialog<?> dialog = new Dialog<>();
+        dialog.initOwner(borderPane.getScene().getWindow());
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/view/manage_place.fxml"));
+        try {
+            dialog.getDialogPane().setContent(fxmlLoader.load());
+            dialog.initStyle(StageStyle.DECORATED);
+            dialog.setResizable(false);
+            dialog.getDialogPane().setPrefSize(940, 700);
+
+
+        } catch(IOException ex) {
+            System.out.println("Couldn't load the dialog");
+            ex.printStackTrace();
+            return;
+        }
+
+        Window window = dialog.getDialogPane().getScene().getWindow();
+        window.setOnCloseRequest(event -> System.out.println("close"));
+
+        dialog.show();
+    }
+
+    private void centerStage(Dialog<?> stage, double width, double height) {
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX((screenBounds.getWidth() - width) / 2);
+        stage.setY((screenBounds.getHeight() - height) / 2);
+    }
+
+    private void actionRequest() {
+        Dialog<?> dialog = new Dialog<>();
+        dialog.initOwner(borderPane.getScene().getWindow());
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/view/request.fxml"));
+        try {
+            dialog.getDialogPane().setContent(fxmlLoader.load());
+            dialog.initStyle(StageStyle.DECORATED);
+            dialog.setResizable(false);
+            dialog.getDialogPane().setPrefSize(940, 700);
+
+
+        } catch(IOException ex) {
+            System.out.println("Couldn't load the dialog");
+            ex.printStackTrace();
+            return;
+        }
+
+        Window window = dialog.getDialogPane().getScene().getWindow();
+        window.setOnCloseRequest(event -> System.out.println("close"));
+
+        dialog.show();
+    }
 
 }

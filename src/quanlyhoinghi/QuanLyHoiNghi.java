@@ -22,7 +22,7 @@ public class QuanLyHoiNghi extends Application {
         Parent root2 = FXMLLoader.load(getClass().getResource("/view/Mainscreen.fxml"));
 
         stage.setTitle("Quản lý hội nghị");
-        stage.setScene(new Scene(root2, 990, 700));
+        stage.setScene(new Scene(root2, 1020, 700));
         
         stage.addEventHandler(WindowEvent.WINDOW_SHOWN, new EventHandler<WindowEvent>() {
             @Override

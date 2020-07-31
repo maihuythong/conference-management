@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManagePlace">
+   <children>
+      <Text layoutX="363.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quản lý tài khoản" wrappingWidth="173.336669921875">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <TableView fx:id="table" layoutX="14.0" layoutY="65.0" prefHeight="560.0" prefWidth="880.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="125.0">
+         <columns>
+            <TableColumn fx:id="idCol" maxWidth="50.0" prefWidth="55.0" text="ID" />
+            <TableColumn fx:id="nameCol" maxWidth="500.0" minWidth="300.0" prefWidth="350.0" text="Tên địa điểm" />
+            <TableColumn fx:id="addrCol" minWidth="300.0" prefWidth="350.0" text="Địa chỉ" />
+            <TableColumn fx:id="sizeCol" minWidth="50.0" prefWidth="140.0" text="Sức chứa" />
+         </columns>
+      </TableView>
+      <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="78.0" prefHeight="30.0" prefWidth="873.0">
+         <children>
+            <TextField fx:id="search_txt" onKeyPressed="#searchKeyWord" prefHeight="26.0" prefWidth="338.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </TextField>
+            <ImageView fx:id="search_btn" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <image>
+                  <Image url="@../img/search.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </ImageView>
+            <CheckBox fx:id="cbId" mnemonicParsing="false" onAction="#idAction" text="ID">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="cbName" mnemonicParsing="false" onAction="#nameAction" text="Tên địa điểm">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </CheckBox>
+            <CheckBox fx:id="cbAddr" mnemonicParsing="false" onAction="#addrAction" text="Địa chỉ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </CheckBox>
+            <CheckBox fx:id="cbSize" mnemonicParsing="false" onAction="#sizeAction" text="Sức chứa">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </CheckBox>
+         </children>
+      </HBox>
+      <Button fx:id="add_btn" layoutX="770.0" layoutY="46.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" text="Thêm địa điểm" />
+   </children>
+</AnchorPane>

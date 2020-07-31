@@ -41,13 +41,14 @@ public class Account  implements java.io.Serializable {
     
     //constructor for table
 
-    public Account(Integer idAccount, String hoTen, String username, String email, boolean active) {
+    public Account(Integer idAccount, String hoTen, String username, String email, boolean active, Set thamgia) {
         this.idAccount = idAccount;
         this.hoTen = hoTen;
         this.username = username;
         this.password = password;
         this.email = email;
         this.active = active;
+        this.thamgiahoinghis = thamgia;
         
         if(active){
             this.status = "Hoạt động";

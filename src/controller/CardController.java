@@ -1,4 +1,5 @@
 package controller;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -7,7 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import pojos.Hoinghi;
@@ -45,12 +48,22 @@ public class CardController extends ListCell<Hoinghi> {
     private Text conf_current;
 
     @FXML
-    private Button conf_btn;
+    private Text detail;
 
     private FXMLLoader fxmlLoader;
+    
+    private Image image;
+    
+    @FXML
+    private Text duration;
 
     @FXML
     void initialize() {
+
+    }
+    
+    @FXML
+    void detail(MouseEvent event) {
 
     }
 
@@ -75,10 +88,24 @@ public class CardController extends ListCell<Hoinghi> {
 
             conf_name.setText(item.getTenHoiNghi());
             conf_short_des.setText(item.getMoTaNgan());
-            conf_location.setText(item.getDiadiem().getTenDiaDiem() + item.getDiadiem().getDiaChi());
+            conf_location.setText(item.getFullAddress());
             conf_max.setText(String.valueOf(item.getDiadiem().getSucChua()));
-            conf_current.setText(String.valueOf(item.getNguoiThamDu()));
-
+            conf_current.setText(String.valueOf(item.getJoined()));
+            duration.setText(String.valueOf(item.getKhoangThoiGian()) + " giờ");
+            conf_time.setText(item.getDateString());
+            conf_max.setText(String.valueOf(item.getDiadiem().getSucChua()));
+            
+            System.out.println(item.getThamgiahoinghis().size());
+            
+            byte []ig = item.getHinhAnh();
+            if(ig != null){
+                ByteArrayInputStream bais = new ByteArrayInputStream(item.getHinhAnh());
+                image = new Image(bais);
+                conf_img.setImage(image);
+                conf_img.setFitWidth(300);
+                conf_img.setFitHeight(250);
+                conf_img.setPreserveRatio(true);
+            }
 
             setText(null);
             setGraphic(anchorPane);

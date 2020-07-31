@@ -88,14 +88,9 @@ public class RegisterController {
     void initialize() {
         
         accounts = session.createQuery("select a.username from Account a where a.isAdmin = 0").list();
-        for(int i = 0; i < accounts.size(); ++i){
-            System.out.println(accounts.get(i));
-        }
-        
         txtSignIn.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                System.out.println("click signin");
                 try {
                     actionSignInClick(mouseEvent);
                 } catch (IOException ex) {
@@ -154,7 +149,6 @@ public class RegisterController {
        
        txtNotification.setText("");
        Account newAccount = new Account(fullName, userName, password, email, true, false);
-       System.out.println(newAccount.toString());
        if(saveAccount(newAccount)){
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Successful");

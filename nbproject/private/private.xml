@@ -3,9 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/controller/AdminManage.java</file>
+            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/controller/ManageConference.java</file>
+            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/controller/ConferenceInfo.java</file>
+            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/controller/ConferenceInfoMain.java</file>
+            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/controller/EditConference.java</file>
+            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/controller/ManagePlace.java</file>
             <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/controller/ManageAccount.java</file>
+            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/controller/AccountController.java</file>
             <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/controller/MainScreenController.java</file>
+            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/controller/ListConferenceAccountJoined.java</file>
+            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/controller/ListConferenceUserJoined.java</file>
+            <file>file:/C:/Users/Huy%20Thông/Documents/NetBeansProjects/QuanLyHoiNghi/src/pojos/Hoinghi.java</file>
         </group>
     </open-files>
 </project-private>

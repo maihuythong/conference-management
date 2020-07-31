@@ -21,6 +21,9 @@ public class Diadiem  implements java.io.Serializable {
     public Diadiem() {
     }
 
+    public String toString(){
+        return this.tenDiaDiem + ", " + this.diaChi;
+    }
 	
     public Diadiem(String tenDiaDiem, String diaChi, int sucChua, boolean active) {
         this.tenDiaDiem = tenDiaDiem;
@@ -35,7 +38,7 @@ public class Diadiem  implements java.io.Serializable {
        this.active = active;
        this.hoinghis = hoinghis;
     }
-   
+    
     public Integer getIdDiaDiem() {
         return this.idDiaDiem;
     }

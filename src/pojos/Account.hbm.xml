@@ -26,7 +26,7 @@
         <property name="isAdmin" type="boolean">
             <column name="IsAdmin" not-null="true" />
         </property>
-        <set name="thamgiahoinghis" table="thamgiahoinghi" inverse="true" lazy="true" fetch="select">
+        <set name="thamgiahoinghis" table="thamgiahoinghi" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="IdAccount" not-null="true" />
             </key>

@@ -4,17 +4,18 @@ import connection.Connection;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.Dialog;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import javafx.stage.StageStyle;
+import javafx.stage.Window;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -25,11 +26,15 @@ import pojos.Account;
 public class UserInfo {
 
 
+    
     @FXML
     private ResourceBundle resources;
 
     @FXML
     private URL location;
+
+    @FXML
+    private AnchorPane anchorPane;
 
     @FXML
     private Text fullName;
@@ -48,26 +53,44 @@ public class UserInfo {
 
     @FXML
     private Text time2;
-    
-    @FXML 
+
+    @FXML
+    private Text list_conf;
+
+    @FXML
     private Button block_btn;
-
-    @FXML
-    private TableView<?> conf_table;
-
-    @FXML
-    private TableColumn<?, ?> idCol;
-
-    @FXML
-    private TableColumn<?, ?> confCol;
-
-    @FXML
-    private TableColumn<?, ?> timeCol;
-
-    @FXML
-    private TableColumn<?, ?> addrCol;
-
+    
     private Account account;
+
+
+    @FXML
+    void list_conf_click(MouseEvent event) {
+        Dialog<?> listConf = new Dialog<>();
+        listConf.initOwner(anchorPane.getScene().getWindow());
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/view/list_conference_user_joined.fxml"));
+
+        try {
+            listConf.getDialogPane().setContent(fxmlLoader.load());
+            ListConferenceUserJoined list= fxmlLoader.getController();
+           
+            list.getConfData(account.getThamgiahoinghis());
+            listConf.initStyle(StageStyle.DECORATED);
+            listConf.setResizable(false);
+            listConf.getDialogPane().setPrefSize(1200, 750);
+
+
+        } catch(IOException ex) {
+            System.out.println("Couldn't load the dialog");
+            ex.printStackTrace();
+            return;
+        }
+
+        Window window = listConf.getDialogPane().getScene().getWindow();
+        window.setOnCloseRequest(e -> initialize());
+
+        listConf.showAndWait();
+    }
 
     @FXML
     void initialize() {

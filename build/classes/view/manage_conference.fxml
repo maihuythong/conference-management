@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManageConference">
+   <children>
+      <Text layoutX="463.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quản lý hội nghị" textAlignment="CENTER" wrappingWidth="1200.0" AnchorPane.leftAnchor="0.0">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+<HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="66.0" prefHeight="30.0" prefWidth="873.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+         <children>
+            <TextField fx:id="search_txt" onKeyReleased="#searchKeyWord" prefHeight="26.0" prefWidth="309.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </TextField>
+            <ImageView fx:id="search_btn" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <image>
+                  <Image url="@../img/search.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </ImageView>
+            <CheckBox fx:id="cbId" mnemonicParsing="false" onAction="#idAction" text="ID">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="cbName" mnemonicParsing="false" onAction="#nameAction" text="Tên hội nghị">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </CheckBox>
+            <CheckBox fx:id="cbPlace" mnemonicParsing="false" onAction="#addrAction" text="Địa điểm">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </CheckBox>
+            <CheckBox fx:id="cbSize" mnemonicParsing="false" onAction="#sizeAction" text="Sức chứa">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </CheckBox>
+            <CheckBox fx:id="cbCurrentSize" mnemonicParsing="false" onAction="#currentSizeAction" text="Người tham dự">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </CheckBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tình trạng:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Text>
+            <ComboBox fx:id="cbbStatus" onAction="#statusAction" prefHeight="26.0" prefWidth="222.0">
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin></ComboBox>
+         </children>
+         <padding>
+            <Insets left="30.0" />
+         </padding>
+      </HBox>
+      <TableView fx:id="table" layoutX="10.0" layoutY="239.0" prefHeight="554.0" prefWidth="682.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="155.0">
+         <columns>
+            <TableColumn fx:id="id" maxWidth="40.0" prefWidth="40.0" text="ID" />
+            <TableColumn fx:id="name" maxWidth="400.0" prefWidth="245.0" text="Tên hội nghị" />
+            <TableColumn fx:id="place" maxWidth="800.0" minWidth="100.0" prefWidth="245.0" text="Địa điểm" />
+            <TableColumn fx:id="time" maxWidth="200.0" minWidth="0.0" prefWidth="150.0" text="Thời gian" />
+            <TableColumn fx:id="duration" maxWidth="300.0" prefWidth="150.0" text="Kéo dài trong (giờ)" />
+            <TableColumn fx:id="size" maxWidth="100.0" prefWidth="90.0" text="Sức chứa" />
+            <TableColumn fx:id="current" maxWidth="200.0" prefWidth="130.0" text="Người tham dự" />
+            <TableColumn fx:id="status" maxWidth="200.0" prefWidth="120.0" text="Tình trạng" />
+         </columns>
+      </TableView>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="104.0" prefHeight="39.0" prefWidth="1080.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <padding>
+            <Insets left="30.0" />
+         </padding>
+         <children>
+            <Button fx:id="add_btn" mnemonicParsing="false" onAction="#add_btn_click" prefHeight="34.0" prefWidth="146.0" text="Thêm hội nghị" textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

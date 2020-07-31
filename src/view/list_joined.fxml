@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListJoined">
+   <children>
+      <Text layoutX="252.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Danh sách tham dự" wrappingWidth="195.73660278320312" AnchorPane.leftAnchor="252.0" AnchorPane.rightAnchor="252.0">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <TableView fx:id="table" layoutX="14.0" layoutY="65.0" prefHeight="560.0" prefWidth="880.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="125.0">
+         <columns>
+            <TableColumn fx:id="nameCol" maxWidth="350.0" minWidth="350.0" prefWidth="350.0" text="Họ và tên" />
+            <TableColumn fx:id="emailCol" maxWidth="350.0" minWidth="350.0" prefWidth="350.0" text="Địa chỉ email" />
+         </columns>
+      </TableView>
+      <Text fx:id="name_conf" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Báo cáo tốt nghiệp" textAlignment="CENTER" wrappingWidth="700.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

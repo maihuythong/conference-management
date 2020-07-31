@@ -63,7 +63,6 @@ public class LoginController {
         txtSignUp.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                System.out.println("click signup");
                 try {
                     actionSignUpClick(mouseEvent);
                 } catch (IOException ex) {
@@ -119,35 +118,20 @@ public class LoginController {
             return;
        }
        Account logAccount = pws.get(0);
-       System.out.println(logAccount.getPassword());
-       
        
        if(pwAuth.authenticate(password, logAccount.getPassword())){
-//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//            alert.setTitle("Successful");
-//            alert.setHeaderText("Chúc mừng!!!");
-//            alert.setContentText("Đăng nhập thành công!");
-// 
-//            alert.showAndWait();
             StorageAccount acc = StorageAccount.getInstance();
             acc.setAccountId(logAccount.getIdAccount());
             acc.setIsAdmin(logAccount.isIsAdmin());
             acc.setAccount(logAccount);
-
-            System.out.println(FXMLLoader.load(getClass().getResource("/view/Accountscreen.fxml")).toString());
-            Parent parent = FXMLLoader.load(getClass().getResource("/view/Accountscreen.fxml"));
-            Scene scene = new Scene(parent);
-            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            stage.centerOnScreen();
-            stage.setResizable(false);
-            stage.setScene(scene);
-            stage.show();
+            Stage stage = (Stage) btnSignIn.getScene().getWindow();
+            stage.close();
 
        }else{
            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Fail");
             alert.setHeaderText("");
-            alert.setContentText("Có lỗi gì đó xảy ra! Bạn vui lòng thử lại!");
+            alert.setContentText("Tên đăng nhập hoặc mật khẩu không đúng!");
  
             alert.showAndWait();
        }

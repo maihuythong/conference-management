@@ -95,11 +95,12 @@ public class ManageAccount {
     private CheckBox cbEmail;
     
     private List<Account> accounts;
+    private List<Account> listAccount = new ArrayList<>();
 
     @FXML
     void initialize() {
 
-
+        table.setPlaceholder(new Label("Không có dữ liệu tài khoản"));
         idCol.setCellValueFactory(new PropertyValueFactory<>("idAccount"));
         nameCol.setCellValueFactory(new PropertyValueFactory<>("hoTen"));
         usernameCol.setCellValueFactory(new PropertyValueFactory<>("username"));
@@ -127,7 +128,7 @@ public class ManageAccount {
                     userInfo.getData(accountSelected);
                     accountDialog.initStyle(StageStyle.DECORATED);
                     accountDialog.setResizable(false);
-                    accountDialog.getDialogPane().setPrefSize(600, 700);
+                    accountDialog.getDialogPane().setPrefSize(600, 300);
 
 
                 } catch(IOException ex) {
@@ -195,60 +196,77 @@ public class ManageAccount {
     private void getAccountData(){
         
         observableList = FXCollections.observableArrayList();
+        Connection connection = new Connection();
+        SessionFactory sessionFactory = connection.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        Transaction transaction = null;
 
-                
-//        Account acc1 = new Account(1, "Mai Huy Thông", "thongthong", "maihuythong@gmail.com",true);
-//        Account acc2 = new Account(2, "Mai Thông", "thong", "maihuythong@gmail.com",true);
-//        Account acc3 = new Account(3, "Huy Thông", "thongth", "maihuythong@gmail.com",true);
-//        Account acc4 = new Account(4, "Thông", "thongtho", "maihuythong@gmail.com",true);
+        transaction = session.beginTransaction();
+        String hql = "select a from Account a where a.isAdmin = :isAdmin";
+        Query query = session.createQuery(hql);
+        query.setParameter("isAdmin", false);
 
-        
-       Connection connection = new Connection();
-       SessionFactory sessionFactory = connection.getSessionFactory();
-       Session session = sessionFactory.openSession();
-       Transaction transaction = null;
-       
-       transaction = session.beginTransaction();
-       String hql = "select a from Account a where a.isAdmin = :isAdmin";
-       Query query = session.createQuery(hql);
-       query.setParameter("isAdmin", false);
-       
-       accounts = query.list();
-       
-       transaction.commit();
-       transaction = null;
-       
-       for(int i = 0; i < accounts.size(); ++i){
-           Account acc = accounts.get(i);
-           Account temp = new Account(acc.getIdAccount(), acc.getHoTen(), acc.getUsername(), acc.getEmail(), acc.isActive());
-           observableList.add(temp);
-           
-       }
+        accounts = query.list();
+
+        transaction.commit();
+        transaction = null;
+
+        for(int i = 0; i < accounts.size(); ++i){
+            Account acc = accounts.get(i);
+            Account temp = new Account(acc.getIdAccount(), acc.getHoTen(), acc.getUsername(), acc.getEmail(), acc.isActive(), acc.getThamgiahoinghis());
+            observableList.add(temp);
+            listAccount.add(temp);
+        }
     }
     
+     @FXML
+    void emailAction(ActionEvent event) {
+        searchKeyWord();
+    }
+
     @FXML
-    void searchKeyWord(KeyEvent event) {
-        Runnable  search = new Runnable (){
-            @Override
-            public void run() {
-                filterItems();
-            }
-            
-        };
+    void idAction(ActionEvent event) {
+        searchKeyWord();
+    }
+
+    @FXML
+    void nameAction(ActionEvent event) {
+        searchKeyWord();
+    }
+
+    @FXML
+    void unameAction(ActionEvent event) {
+        searchKeyWord();
+    }
+
+    
+    @FXML
+    void searchKeyWord() {
+        if(cbId.isSelected() || cbName.isSelected() || cbUsername.isSelected() || cbEmail.isSelected()){
+            Runnable  search = new Runnable (){
+                @Override
+                public void run() {
+                    filterItems();
+                }
+            };
         
-        new Thread(search).start();
+            new Thread(search).start();
+        }else{
+            observableList.clear();
+            observableList.addAll(listAccount);
+            table.setItems(observableList);
+        }
     }
     
     private void filterItems(){
         String searchText = search_txt.getText().trim();
-        System.out.println(cbEmail.isSelected());
         if(searchText.equals("")){
             initialize();
             return;
         }
         
         observableList.clear();
-        List<Account> newAccounts = new ArrayList<>(accounts);
+        List<Account> newAccounts = new ArrayList<>(listAccount);
         
         if(cbId.isSelected()){
             searchbyId(newAccounts, searchText);
@@ -286,7 +304,7 @@ public class ManageAccount {
 
             for(int i = 0; i < aIds.size(); ++i){
                 Account acc = aIds.get(i);
-                Account temp = new Account(acc.getIdAccount(), acc.getHoTen(), acc.getUsername(), acc.getEmail(), acc.isActive());
+                Account temp = new Account(acc.getIdAccount(), acc.getHoTen(), acc.getUsername(), acc.getEmail(), acc.isActive(), acc.getThamgiahoinghis());
                 observableList.add(temp);
             }
 
@@ -304,7 +322,7 @@ public class ManageAccount {
         for(int i = 0; i < aIds.size(); ++i){
             Account acc = aIds.get(i);
             if(!isContainById(acc.getIdAccount())){
-                Account temp = new Account(acc.getIdAccount(), acc.getHoTen(), acc.getUsername(), acc.getEmail(), acc.isActive());
+                Account temp = new Account(acc.getIdAccount(), acc.getHoTen(), acc.getUsername(), acc.getEmail(), acc.isActive(), acc.getThamgiahoinghis());
                 observableList.add(temp);
             }
         }
@@ -316,7 +334,7 @@ public class ManageAccount {
         for(int i = 0; i < aIds.size(); ++i){
             Account acc = aIds.get(i);
             if(!isContainById(acc.getIdAccount())){
-                Account temp = new Account(acc.getIdAccount(), acc.getHoTen(), acc.getUsername(), acc.getEmail(), acc.isActive());
+                Account temp = new Account(acc.getIdAccount(), acc.getHoTen(), acc.getUsername(), acc.getEmail(), acc.isActive(), acc.getThamgiahoinghis());
                 observableList.add(temp);
             }
         }
@@ -328,7 +346,7 @@ public class ManageAccount {
         for(int i = 0; i < aIds.size(); ++i){
             Account acc = aIds.get(i);
             if(!isContainById(acc.getIdAccount())){
-                Account temp = new Account(acc.getIdAccount(), acc.getHoTen(), acc.getUsername(), acc.getEmail(), acc.isActive());
+                Account temp = new Account(acc.getIdAccount(), acc.getHoTen(), acc.getUsername(), acc.getEmail(), acc.isActive(), acc.getThamgiahoinghis());
                 observableList.add(temp);
             }
         }

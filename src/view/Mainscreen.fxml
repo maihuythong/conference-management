@@ -3,9 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -16,13 +14,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainScreenController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainScreenController">
    <top>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #0077be;" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="100.0" prefWidth="200.0">
+            <VBox prefHeight="100.0" prefWidth="250.0" style="-fx-background-color: #0077be;">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Quản lý" textAlignment="CENTER" wrappingWidth="150.0">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Quản lý" textAlignment="CENTER" wrappingWidth="200.0">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -30,21 +28,21 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hội nghị" textAlignment="CENTER" wrappingWidth="150.0">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Hội nghị" textAlignment="CENTER" wrappingWidth="200.0">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets />
+                        <Insets top="5.0" />
                      </VBox.margin>
                   </Text>
                </children>
             </VBox>
             <VBox prefHeight="100.0" prefWidth="400.0">
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="69.0" prefWidth="330.0">
                      <children>
-                        <TextField fx:id="search_txt" prefHeight="26.0" prefWidth="402.0">
+                        <TextField fx:id="search_txt" onKeyReleased="#searchKeyWord" prefHeight="26.0" prefWidth="402.0">
                            <HBox.margin>
                               <Insets top="30.0" />
                            </HBox.margin>
@@ -62,10 +60,10 @@
                         </ImageView>
                      </children>
                   </HBox>
-                  <HBox prefHeight="44.0" prefWidth="380.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="330.0">
                      <children>
-                        <CheckBox fx:id="title_cb" mnemonicParsing="false" text="Tiêu đề" />
-                        <CheckBox fx:id="description_cb" mnemonicParsing="false" text="Mô tả">
+                        <CheckBox fx:id="title_cb" mnemonicParsing="false" onAction="#titleAction" text="Tiêu đề" textFill="WHITE" />
+                        <CheckBox fx:id="description_cb" mnemonicParsing="false" onAction="#desAction" text="Mô tả" textFill="WHITE">
                            <HBox.margin>
                               <Insets left="30.0" />
                            </HBox.margin>
@@ -76,81 +74,114 @@
                <padding>
                   <Insets left="20.0" />
                </padding>
+               <HBox.margin>
+                  <Insets left="100.0" />
+               </HBox.margin>
             </VBox>
-            <VBox prefHeight="100.0" prefWidth="400.0">
+            <AnchorPane prefHeight="74.0" prefWidth="98.0">
                <children>
-                  <HBox prefHeight="70.0" prefWidth="200.0">
+                  <AnchorPane fx:id="card_view" layoutY="24.0" prefHeight="35.0" prefWidth="98.0">
                      <children>
-                        <DatePicker fx:id="date_from" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="đến">
-                           <HBox.margin>
-                              <Insets left="5.0" right="5.0" top="5.0" />
-                           </HBox.margin>
+                        <ImageView fitHeight="33.0" fitWidth="42.0" layoutX="-3.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/card2.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="WHITE" layoutX="33.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card View">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                         </Text>
-                        <DatePicker fx:id="date_to">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </DatePicker>
                      </children>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                     <padding>
-                        <Insets top="30.0" />
-                     </padding>
-                  </HBox>
-                  <HBox prefHeight="30.0" prefWidth="200.0">
-                     <children>
-                        <ImageView fx:id="card_view" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/card.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fx:id="list_view" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/list.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </HBox>
+                  </AnchorPane>
                </children>
-            </VBox>
+            </AnchorPane>
+            <AnchorPane prefHeight="100.0" prefWidth="302.0">
+               <children>
+                  <AnchorPane fx:id="list_view" layoutX="15.0" layoutY="28.0" prefHeight="30.0" prefWidth="92.0">
+                     <children>
+                        <Text fill="WHITE" layoutX="30.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="List View">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/list2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
          </children>
       </HBox>
    </top>
    <left>
-      <VBox prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0077be;" BorderPane.alignment="CENTER">
          <children>
             <VBox prefHeight="0.0" prefWidth="100.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Xin chào," textAlignment="CENTER" wrappingWidth="200.0">
-                     <font>
-                        <Font name="Segoe UI" size="14.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="account_name" strokeType="OUTSIDE" strokeWidth="0.0" text="Huy Thông" textAlignment="CENTER" wrappingWidth="200.0">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Xin chào," textAlignment="CENTER" wrappingWidth="200.0">
                      <font>
                         <Font name="Segoe UI" size="18.0" />
                      </font>
                   </Text>
+                  <Text fx:id="account_name" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Guest" textAlignment="CENTER" wrappingWidth="200.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Text>
                </children>
             </VBox>
-            <BorderPane fx:id="account" prefHeight="20.0" prefWidth="200.0">
+            <BorderPane fx:id="dashboard" prefHeight="20.0" prefWidth="200.0">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                <center>
                   <HBox prefHeight="0.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/account.png" />
+                              <Image url="@../img/dashboard.png" />
                            </image>
                         </ImageView>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tài khoản" wrappingWidth="105.0">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard" wrappingWidth="105.0">
                            <font>
                               <Font size="18.0" />
                            </font>
                            <HBox.margin>
-                              <Insets left="10.0" top="2.0" />
+                              <Insets left="10.0" top="5.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+               </center>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </BorderPane>
+            <BorderPane fx:id="about" prefHeight="20.0" prefWidth="200.0">
+               <center>
+                  <HBox prefHeight="0.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/about.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="About software" wrappingWidth="125.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" top="5.0" />
                            </HBox.margin>
                         </Text>
                      </children>
@@ -166,21 +197,21 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </BorderPane>
-            <BorderPane fx:id="manage_account" prefHeight="20.0" prefWidth="200.0">
+            <BorderPane fx:id="account" prefHeight="20.0" prefWidth="200.0">
                <center>
                   <HBox prefHeight="0.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/edit.png" />
+                              <Image url="@../img/account.png" />
                            </image>
                         </ImageView>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="User" wrappingWidth="105.0">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tài khoản" wrappingWidth="105.0">
                            <font>
                               <Font size="18.0" />
                            </font>
                            <HBox.margin>
-                              <Insets left="10.0" top="5.0" />
+                              <Insets left="10.0" top="2.0" />
                            </HBox.margin>
                         </Text>
                      </children>
@@ -202,10 +233,10 @@
                      <children>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/conference.png" />
+                              <Image url="@../img/manage.png" />
                            </image>
                         </ImageView>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Quản lý" wrappingWidth="105.0">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Quản lý" wrappingWidth="105.0">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -226,29 +257,14 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </BorderPane>
-            <BorderPane prefHeight="20.0" prefWidth="200.0">
-               <bottom>
-                  <VBox prefHeight="0.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-                     <BorderPane.margin>
-                        <Insets />
-                     </BorderPane.margin>
-                     <padding>
-                        <Insets left="40.0" />
-                     </padding>
-                  </VBox>
-               </bottom>
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
-            </BorderPane>
          </children>
       </VBox>
    </left>
    <center>
-      <AnchorPane prefHeight="800.0" prefWidth="750.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: #fff;" BorderPane.alignment="CENTER">
          <children>
-            <ListView fx:id="listview" prefHeight="600.0" prefWidth="750.0" visible="false" />
-            <HBox fx:id="cardview" alignment="CENTER" prefHeight="600.0" prefWidth="750.0">
+            <ListView fx:id="listview" layoutY="8.0" prefHeight="606.0" prefWidth="800.0" visible="false" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
+            <HBox fx:id="cardview" alignment="CENTER" prefHeight="600.0" prefWidth="750.0" style="-fx-background-color: #fff;" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="0.0">
                <children>
                   <ImageView fx:id="card_return" fitHeight="50.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -258,73 +274,109 @@
                         <Insets right="15.0" />
                      </HBox.margin>
                   </ImageView>
-                  <VBox fx:id="card1" alignment="TOP_CENTER" prefHeight="300.0" prefWidth="280.0" style="-fx-border-color: #0077be; -fx-border-radius: 5px; -fx-border-width: 2px;">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-width: 2px; -fx-border-color: #0077BE; -fx-border-radius: 5px;">
                      <children>
-                        <ImageView fx:id="card_img1" fitHeight="200.0" fitWidth="270.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/hinh_1.jpg" />
-                           </image>
-                           <VBox.margin>
-                              <Insets left="5.0" right="5.0" top="20.0" />
-                           </VBox.margin>
-                        </ImageView>
-                        <Text fx:id="card_title1" strokeType="OUTSIDE" strokeWidth="0.0" text="Hội nghị abc xyz clmnopq hội nghị mmmmmmmmm" textAlignment="CENTER" wrappingWidth="220.0">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin>
-                        </Text>
-                        <HBox prefHeight="30.0" prefWidth="200.0">
+                        <VBox fx:id="card1" alignment="TOP_CENTER" prefHeight="300.0" prefWidth="280.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thời gian:">
+                              <ImageView fx:id="card_img1" fitHeight="200.0" fitWidth="270.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/default.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets left="5.0" right="5.0" top="20.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <Text fx:id="card_title1" strokeType="OUTSIDE" strokeWidth="0.0" text="No title" textAlignment="CENTER" wrappingWidth="220.0">
                                  <font>
-                                    <Font size="14.0" />
+                                    <Font name="System Bold" size="18.0" />
                                  </font>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
                               </Text>
-                              <Text fx:id="card_time1" strokeType="OUTSIDE" strokeWidth="0.0" text="01/01/2020">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="10.0" />
-                                 </HBox.margin>
-                              </Text>
+                              <HBox prefHeight="30.0" prefWidth="200.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thời gian:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="card_time1" strokeType="OUTSIDE" strokeWidth="0.0">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="5.0" right="5.0" top="19.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox prefHeight="30.0" prefWidth="200.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Địa điểm:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="card_addr1" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="180.0">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="5.0" right="5.0" top="10.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox prefHeight="30.0" prefWidth="200.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thời gian diễn ra:" wrappingWidth="116.06340789794922">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="duration1" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="137.6000518798828">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="5.0" right="5.0" top="10.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox maxHeight="100.0" minHeight="80.0" prefHeight="30.0" prefWidth="200.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mô tả: " wrappingWidth="61.66338348388672">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="des1" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="196.800048828125">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="5.0" right="5.0" top="10.0" />
+                                 </VBox.margin>
+                              </HBox>
                            </children>
-                           <VBox.margin>
-                              <Insets left="5.0" right="5.0" top="19.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <HBox prefHeight="30.0" prefWidth="200.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Địa điểm:">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="card_addr1" strokeType="OUTSIDE" strokeWidth="0.0" text="Hội trường I Đại học khoa học tự nhiên 227 Nguyễn Văn cừ P4 Q5 TP HCM" wrappingWidth="180.0">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="10.0" />
-                                 </HBox.margin>
-                              </Text>
-                           </children>
-                           <VBox.margin>
-                              <Insets left="5.0" right="5.0" top="10.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <TextArea fx:id="card_des1" prefHeight="100.0" prefWidth="270.0" text="Lorem ..." wrapText="true">
-                           <VBox.margin>
-                              <Insets left="5.0" right="5.0" top="15.0" />
-                           </VBox.margin>
-                        </TextArea>
-                        <Text fx:id="card_detail1" fill="#0077be" strokeType="OUTSIDE" strokeWidth="0.0" text="Chi tiết">
-                           <VBox.margin>
-                              <Insets top="15.0" />
-                           </VBox.margin>
+                        </VBox>
+                        <Text fx:id="card_detail1" fill="#0077be" layoutX="115.0" layoutY="555.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chi tiết">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -333,83 +385,119 @@
                      <HBox.margin>
                         <Insets bottom="10.0" right="10.0" top="15.0" />
                      </HBox.margin>
-                  </VBox>
-                  <VBox fx:id="card2" alignment="TOP_CENTER" prefHeight="300.0" prefWidth="280.0" style="-fx-border-color: #0077be; -fx-border-radius: 5px; -fx-border-width: 2px;">
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-width: 2px; -fx-border-color: #0077BE; -fx-border-radius: 5px;">
                      <children>
-                        <ImageView fx:id="card_img2" fitHeight="200.0" fitWidth="270.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/hinh_1.jpg" />
-                           </image>
-                           <VBox.margin>
-                              <Insets left="5.0" right="5.0" top="20.0" />
-                           </VBox.margin>
-                        </ImageView>
-                        <Text fx:id="card_title2" strokeType="OUTSIDE" strokeWidth="0.0" text="Hội nghị abc xyz clmnopq hội nghị mmmmmmmmm" textAlignment="CENTER" wrappingWidth="220.0">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin>
-                        </Text>
-                        <HBox prefHeight="30.0" prefWidth="200.0">
+                        <VBox fx:id="card11" alignment="TOP_CENTER" prefHeight="300.0" prefWidth="280.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thời gian:">
+                              <ImageView fx:id="card_img2" fitHeight="200.0" fitWidth="270.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/default.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets left="5.0" right="5.0" top="20.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <Text fx:id="card_title2" strokeType="OUTSIDE" strokeWidth="0.0" text="No title" textAlignment="CENTER" wrappingWidth="220.0">
                                  <font>
-                                    <Font size="14.0" />
+                                    <Font name="System Bold" size="18.0" />
                                  </font>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
                               </Text>
-                              <Text fx:id="card_time2" strokeType="OUTSIDE" strokeWidth="0.0" text="01/01/2020">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="10.0" />
-                                 </HBox.margin>
-                              </Text>
+                              <HBox prefHeight="30.0" prefWidth="200.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thời gian:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="card_time2" strokeType="OUTSIDE" strokeWidth="0.0">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="5.0" right="5.0" top="19.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox prefHeight="30.0" prefWidth="200.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Địa điểm:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="card_addr2" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="180.0">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="5.0" right="5.0" top="10.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox prefHeight="30.0" prefWidth="200.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thời gian diễn ra:" wrappingWidth="116.06340789794922">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="duration2" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="137.6000518798828">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="5.0" right="5.0" top="10.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox maxHeight="100.0" minHeight="80.0" prefHeight="30.0" prefWidth="200.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mô tả: " wrappingWidth="61.66338348388672">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="des2" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="196.800048828125">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="5.0" right="5.0" top="10.0" />
+                                 </VBox.margin>
+                              </HBox>
                            </children>
-                           <VBox.margin>
-                              <Insets left="5.0" right="5.0" top="19.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <HBox prefHeight="30.0" prefWidth="200.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Địa điểm:">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="card_addr2" strokeType="OUTSIDE" strokeWidth="0.0" text="Hội trường I Đại học khoa học tự nhiên 227 Nguyễn Văn cừ P4 Q5 TP HCM" wrappingWidth="180.0">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="10.0" />
-                                 </HBox.margin>
-                              </Text>
-                           </children>
-                           <VBox.margin>
-                              <Insets left="5.0" right="5.0" top="10.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <TextArea fx:id="card_des2" prefHeight="100.0" prefWidth="270.0" text="Lorem ..." wrapText="true">
-                           <VBox.margin>
-                              <Insets left="5.0" right="5.0" top="15.0" />
-                           </VBox.margin>
-                        </TextArea>
-                        <Text fx:id="card_detail2" fill="#0077be" strokeType="OUTSIDE" strokeWidth="0.0" text="Chi tiết">
-                           <VBox.margin>
-                              <Insets top="15.0" />
-                           </VBox.margin>
+                        </VBox>
+                        <Text fx:id="card_detail2" fill="#0077be" layoutX="115.0" layoutY="555.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chi tiết">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Text>
                      </children>
                      <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" top="15.0" />
+                        <Insets bottom="10.0" right="10.0" top="15.0" />
                      </HBox.margin>
-                  </VBox>
+                  </AnchorPane>
                   <ImageView fx:id="card_next" fitHeight="50.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/next.png" />
@@ -421,6 +509,12 @@
                </children>
             </HBox>
          </children>
+         <BorderPane.margin>
+            <Insets top="5.0" />
+         </BorderPane.margin>
+         <padding>
+            <Insets top="5.0" />
+         </padding>
       </AnchorPane>
    </center>
 </BorderPane>

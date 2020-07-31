@@ -12,10 +12,10 @@
                 <column name="IdHoiNghi" />
             </key-property>
         </composite-id>
-        <many-to-one name="account" class="pojos.Account" update="false" insert="false" fetch="select">
+        <many-to-one name="account" class="pojos.Account" update="false" insert="false" fetch="select" lazy="false">
             <column name="IdAccount" not-null="true" />
         </many-to-one>
-        <many-to-one name="hoinghi" class="pojos.Hoinghi" update="false" insert="false" fetch="select">
+        <many-to-one name="hoinghi" class="pojos.Hoinghi" update="false" insert="false" fetch="select" lazy="false">
             <column name="IdHoiNghi" not-null="true" />
         </many-to-one>
         <property name="active" type="boolean">

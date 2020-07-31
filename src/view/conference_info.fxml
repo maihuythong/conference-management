@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ConferenceInfo">
+   <children>
+      <ImageView fx:id="img" fitHeight="250.0" fitWidth="300.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <HBox alignment="CENTER_LEFT" layoutX="363.0" layoutY="146.0" prefHeight="30.0" prefWidth="426.0" AnchorPane.leftAnchor="340.0" AnchorPane.topAnchor="150.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thời gian diễn ra:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="duration" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="364.0" layoutY="101.0" prefHeight="30.0" prefWidth="426.0" AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thời gian:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="time" strokeType="OUTSIDE" strokeWidth="0.0" text="Time">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="363.0" layoutY="201.0" prefHeight="30.0" prefWidth="426.0" AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="10.600000000000023" AnchorPane.topAnchor="200.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Địa điểm:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="addr" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="370.0">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <TextArea fx:id="short_des" editable="false" layoutX="10.0" layoutY="332.0" prefHeight="75.0" prefWidth="775.0" promptText="Mô tả ngắn" wrapText="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="15.0" />
+      <TextArea fx:id="description" editable="false" layoutX="10.0" layoutY="450.0" prefHeight="200.0" prefWidth="774.0" promptText="Chi tiết" wrapText="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="15.0" />
+      <Text layoutX="10.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mô tả ngắn:" AnchorPane.leftAnchor="10.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="10.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chi tiết:" AnchorPane.leftAnchor="10.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Button fx:id="close" layoutX="372.0" layoutY="661.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Đóng" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="350.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Text fx:id="name" layoutX="333.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên hội nghị" textAlignment="CENTER" wrappingWidth="460.0" AnchorPane.rightAnchor="10.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <Button fx:id="list_joined" layoutX="314.0" layoutY="293.0" mnemonicParsing="false" onAction="#list_joined_click" prefHeight="30.0" prefWidth="170.0" text="Danh sách tham dự">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

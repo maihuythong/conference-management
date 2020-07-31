@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -11,10 +10,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="750.0" style="-fx-border-color: #0077be; -fx-border-width: 5px; -fx-border-radius: 5px;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox alignment="CENTER" prefHeight="300.0" prefWidth="350.0">
+      <HBox alignment="CENTER" prefHeight="300.0" prefWidth="355.0">
          <children>
             <ImageView fx:id="conf_img" fitHeight="204.0" fitWidth="318.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -25,7 +23,7 @@
       </HBox>
       <VBox alignment="TOP_CENTER" layoutX="350.0" prefHeight="300.0" prefWidth="400.0">
          <children>
-            <Text fx:id="conf_name" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên hội nghị" textAlignment="CENTER">
+            <Text fx:id="conf_name" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên hội nghị" textAlignment="CENTER" wrappingWidth="380.0">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -33,9 +31,9 @@
                   <Insets top="8.0" />
                </VBox.margin>
             </Text>
-            <TextArea fx:id="conf_short_des" prefHeight="99.0" prefWidth="402.0" text="Mô tả ngắn&#10;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book." wrapText="true">
+            <TextArea fx:id="conf_short_des" editable="false" prefHeight="99.0" prefWidth="378.0" text="Mô tả ngắn&#10;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book." wrapText="true">
                <VBox.margin>
-                  <Insets right="5.0" top="10.0" />
+                  <Insets right="10.0" top="30.0" />
                </VBox.margin>
             </TextArea>
             <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="400.0">
@@ -52,6 +50,22 @@
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Diễn ra trong: ">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Text fx:id="duration" strokeType="OUTSIDE" strokeWidth="0.0" text="4">
+                     <HBox.margin>
+                        <Insets left="11.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
                   </Text>
                </children>
             </HBox>
@@ -105,11 +119,6 @@
                   </Text>
                </children>
             </HBox>
-            <Button fx:id="conf_btn" mnemonicParsing="false" text="Tham gia" textAlignment="CENTER" wrapText="true">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
          </children>
       </VBox>
    </children>
